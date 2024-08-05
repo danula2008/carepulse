@@ -1,3 +1,4 @@
+import "dotenv/config";
 import * as sdk from "node-appwrite";
 
 export const {
@@ -11,9 +12,16 @@ export const {
   NEXT_PUBLIC_ENDPOINT: ENDPOINT,
 } = process.env;
 
+console.log(process.env);
+
 const client = new sdk.Client();
 
-client.setEndpoint(ENDPOINT!).setProject(PROJECT_ID!).setKey(API_KEY!);
+client
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject("b83fcded3a")
+  .setKey(
+    "e8c3d7b43f65495a79803324fb68d1365a8505cfed077b9193caa7f4557db49ebc279db7b28567ed1a7982e9feeb1d54e36b469a9bdf2a8babe456"
+  );
 
 export const databases = new sdk.Databases(client);
 export const storage = new sdk.Storage(client);
